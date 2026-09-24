@@ -129,3 +129,135 @@ body {
     padding: 100px 50px;
     background: white;
 }
+
+/* --- Dashboard & Layout Global --- */
+.dashboard-body {
+    background-color: #f4f4f4;
+    padding-top: 100px; /* Jarak untuk navbar fixed */
+}
+
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Tabs --- */
+.tabs {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    color: #2e8b57;
+    border-bottom: 3px solid #2e8b57;
+}
+
+/* --- Job Cards --- */
+.job-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.job-card h2 { color: #333; }
+.job-card h3 { color: #555; margin: 15px 0 5px 0; font-size: 16px; }
+.job-card p, .job-card ol { color: #666; font-size: 14px; line-height: 1.6; }
+.job-card ol { padding-left: 20px; }
+
+/* --- Buttons --- */
+.btn-primary { background-color: #32cd32; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.btn-secondary { background-color: #e0e0e0; color: #333; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.btn-danger { background-color: #ff4d4d; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.btn-text { background: none; border: none; color: #0066cc; font-weight: bold; cursor: pointer; }
+.action-buttons { display: flex; gap: 10px; }
+
+/* --- Profile Layout (Peserta Dashboard) --- */
+.profile-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.profile-sidebar {
+    width: 30%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+}
+
+.bio { font-size: 13px; color: #666; margin: 15px 0; text-align: left; }
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    background-color: #32cd32;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2px 0;
+}
+
+.profile-content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.section-item h4 { color: #333; margin-bottom: 5px; }
+.section-item p { color: #666; font-size: 14px; }

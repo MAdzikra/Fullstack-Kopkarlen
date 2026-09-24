@@ -1,8 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head><title>Daftar Karir</title></head>
-<body>
-    <h1>Halaman Lowongan Karir</h1>
-    <a href="index.html">Kembali ke Landing Page</a>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karir - Kopkarlen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+    <header class="navbar">
+        <div class="logo-container"><h1 class="logo-text">KopKarLen</h1></div>
+        <nav class="nav-menu">
+            <a href="index.html">HOME</a>
+            <a href="karir.html" class="nav-highlight">KARIR</a>
+            <a href="#" onclick="logout()" class="btn-nav-login">LOGOUT</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="tabs">
+            <button class="tab-btn active">Lowongan</button>
+            <button class="tab-btn">Hasil</button>
+        </div>
+
+        <!-- Card Fullstack Developer -->
+        <div class="job-card">
+            <div class="job-header">
+                <h2>Fullstack Developer</h2>
+                <button class="btn-primary">Lamar</button>
+            </div>
+            <h3>Deskripsi</h3>
+            <p>Kami sedang mencari seorang Full-Stack Developer yang handal untuk bergabung dengan tim teknologi kami. Anda akan bertanggung jawab merancang, mengembangkan, dan memelihara aplikasi web dari awal hingga tahap perilisan. Peran ini menuntut kemampuan untuk mengelola antarmuka pengguna (front-end) sekaligus infrastruktur dasar dan basis data (back-end).</p>
+            <h3>Requirements</h3>
+            <ol>
+                <li>Menguasai teknologi dasar web seperti HTML5, CSS3, dan JavaScript (ES6+)/TypeScript.</li>
+                <li>Kemampuan merancang, mengoptimalkan, dan mengelola database Relasional (PostgreSQL, MySQL) maupun Non-Relasional (MongoDB, Redis).</li>
+                <li>Pengalaman menggunakan Git untuk version control dan kolaborasi tim (GitHub/GitLab).</li>
+            </ol>
+        </div>
+
+        <!-- Card DevOps Engineer -->
+        <div class="job-card">
+            <div class="job-header">
+                <h2>DevOps Engineer</h2>
+                <button class="btn-primary">Lamar</button>
+            </div>
+            <h3>Deskripsi</h3>
+            <p>Kami sedang mencari seorang DevOps Engineer yang berpengalaman untuk menjembatani celah antara tim pengembangan perangkat lunak (Development) dan tim operasional (Operations). Anda akan bertanggung jawab untuk membangun, mengotomatisasi, dan memelihara infrastruktur cloud, pipeline CI/CD, serta memastikan sistem aplikasi kami berjalan dengan performa tinggi, aman, dan memiliki tingkat ketersediaan yang tinggi (highly available).</p>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+    </script>
 </body>
 </html>
