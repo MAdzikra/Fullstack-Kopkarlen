@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Kopkarlen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+    <header class="navbar">
+        <div class="logo-container"><h1 class="logo-text">KopKarLen</h1></div>
+        <nav class="nav-menu">
+            <a href="index.html">HOME</a>
+            <a href="#" onclick="logout()" class="btn-nav-login">LOGOUT</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="tabs">
+            <button class="tab-btn active">Kelola Lowongan</button>
+            <button class="tab-btn">Kelola Karyawan</button>
+        </div>
+
+        <button class="btn-primary" style="margin-bottom: 20px;">+ Tambah Lowongan Kerja</button>
+
+        <!-- Card Admin Fullstack Developer -->
+        <div class="job-card">
+            <div class="job-header">
+                <h2>Fullstack Developer</h2>
+                <div class="action-buttons">
+                    <button class="btn-secondary">Lihat Data Pelamar</button>
+                    <button class="btn-secondary">Edit</button>
+                    <button class="btn-danger">Non-aktifkan</button>
+                </div>
+            </div>
+            <h3>Deskripsi</h3>
+            <p>Kami sedang mencari seorang Full-Stack Developer yang handal untuk bergabung dengan tim teknologi kami. Anda akan bertanggung jawab merancang, mengembangkan, dan memelihara aplikasi web dari awal hingga tahap perilisan...</p>
+        </div>
+
+        <!-- Card Admin DevOps Engineer -->
+        <div class="job-card">
+            <div class="job-header">
+                <h2>DevOps Engineer</h2>
+                <div class="action-buttons">
+                    <button class="btn-secondary">Lihat Data Pelamar</button>
+                    <button class="btn-secondary">Edit</button>
+                    <button class="btn-danger">Non-aktifkan</button>
+                </div>
+            </div>
+            <h3>Deskripsi</h3>
+            <p>Kami sedang mencari seorang DevOps Engineer yang berpengalaman untuk menjembatani celah antara tim pengembangan perangkat lunak (Development) dan tim operasional (Operations)...</p>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

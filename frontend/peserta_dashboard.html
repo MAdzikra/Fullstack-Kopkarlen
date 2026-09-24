@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pelamar - Kopkarlen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+    <header class="navbar">
+        <div class="logo-container"><h1 class="logo-text">KopKarLen</h1></div>
+        <nav class="nav-menu">
+            <a href="index.html">HOME</a>
+            <a href="karir.html">KARIR</a>
+            <a href="#" onclick="logout()" class="btn-nav-login">LOGOUT</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container profile-layout">
+        <aside class="profile-sidebar">
+            <div class="avatar-placeholder"></div>
+            <h2>John Doe</h2>
+            <p class="bio">Saya seorang Software Engineer dengan pengalaman lebih dari 4 tahun dalam merancang, membangun, dan memelihara aplikasi web berskala enterprise...</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 100%;">100%</div>
+            </div>
+            <button class="btn-secondary">Preview CV</button>
+            <button class="btn-primary" style="margin-top: 10px; width: 100%;">Download CV</button>
+        </aside>
+
+        <main class="profile-content">
+            <div class="section-card">
+                <div class="section-header">
+                    <h3>Riwayat Pendidikan</h3>
+                    <button class="btn-text">Edit</button>
+                </div>
+                <div class="section-item">
+                    <h4>Universitas Tangerang</h4>
+                    <p>Jurusan Sastra Mesin Program Studi S1 Mesin (2022-2026) | IPK 3.95</p>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-header">
+                    <h3>Riwayat Pekerjaan</h3>
+                    <button class="btn-text">Edit</button>
+                </div>
+                <div class="section-item">
+                    <h4>Project Management Officer Intern</h4>
+                    <p>PT. Surya Cahaya Kami (12 Juni 2025 - 12 Desember 2025)</p>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-header">
+                    <h3>Riwayat Pelatihan</h3>
+                    <button class="btn-text">Edit</button>
+                </div>
+                <div class="section-item">
+                    <h4>CCNP - Cisco Networking Academy</h4>
+                    <p>Agustus 2027</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
