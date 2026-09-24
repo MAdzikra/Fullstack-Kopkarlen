@@ -19,9 +19,9 @@
             <a href="#visi-misi">VISI MISI</a>
             <a href="#galeri">GALERI</a>
             <a href="#kontak">KONTAK</a>
-            <!-- Tambahan Menu Karir & Login -->
-            <a href="karir.html" class="nav-highlight">KARIR</a>
-            <a href="login.html" class="btn-nav-login">LOGIN</a>
+            <!-- Tambahkan id pada Karir dan Login -->
+            <a href="#" id="nav-karir" class="nav-highlight">KARIR</a>
+            <a href="login.html" id="nav-login" class="btn-nav-login">LOGIN</a>
         </nav>
     </header>
 
@@ -46,6 +46,37 @@
         <h2>ABOUT</h2>
         <p>Konten About Kopkarlen...</p>
     </section>
+<!-- Script Pengecekan Sesi Login -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Ambil data sesi dari browser
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const role = localStorage.getItem('role');
+            
+            const karirLink = document.getElementById('nav-karir');
+            const loginLink = document.getElementById('nav-login');
 
+            // Logika pencegatan tombol Karir
+            karirLink.addEventListener('click', function(e) {
+                if (!isLoggedIn) {
+                    e.preventDefault(); // Cegah pindah halaman
+                    alert("Silakan login terlebih dahulu untuk melihat lowongan Karir.");
+                    window.location.href = "login.html"; // Lempar ke halaman login
+                } else {
+                    window.location.href = "karir.html"; // Izinkan masuk
+                }
+            });
+
+            // Ubah tombol "LOGIN" menjadi "DASHBOARD" jika sudah login
+            if (isLoggedIn) {
+                loginLink.textContent = "DASHBOARD";
+                if (role === 'admin') {
+                    loginLink.href = "admin_dashboard.html";
+                } else {
+                    loginLink.href = "peserta_dashboard.html";
+                }
+            }
+        });
+    </script>
 </body>
 </html>

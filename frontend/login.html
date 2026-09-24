@@ -27,34 +27,39 @@
         </form>
     </div>
 
-    <!-- Logika Javascript Dummy 4 Role -->
+    <!-- Logika Javascript Dummy 4 Role dengan LocalStorage -->
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Mencegah reload halaman
+            e.preventDefault(); 
             
             const email = document.getElementById('email').value;
             const pass = document.getElementById('password').value;
             const errorMsg = document.getElementById('error-message');
             
-            errorMsg.style.display = 'none'; // Sembunyikan error dulu
+            errorMsg.style.display = 'none'; 
 
-            // Logika pengecekan role
             if (email === 'firgi@gmail.id' && pass === '1234') {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('role', 'admin');
                 alert("Berhasil login sebagai: Admin");
-                window.location.href = "admin_dashboard.html"; // Arahkan ke dashboard admin
+                window.location.href = "admin_dashboard.html";
             } else if (email === 'adzikry@gmail.id' && pass === '1234') {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('role', 'peserta');
                 alert("Berhasil login sebagai: Pelamar");
-                window.location.href = "peserta_dashboard.html"; // Arahkan ke dashboard peserta
+                window.location.href = "peserta_dashboard.html";
             } else if (email === 'bayu@gmail.id' && pass === '1234') {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('role', 'client0');
                 alert("Berhasil login sebagai: Client 0");
-                window.location.href = "peserta_dashboard.html"; // Sesuai instruksimu, diarahkan ke dashboard peserta
+                window.location.href = "peserta_dashboard.html";
             } else if (email === 'ida@gmail.id' && pass === '1234') {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('role', 'client1');
                 alert("Berhasil login sebagai: Client 1");
-                window.location.href = "peserta_dashboard.html"; // Sesuai instruksimu, diarahkan ke dashboard peserta
+                window.location.href = "peserta_dashboard.html";
             } else {
-                errorMsg.style.display = 'block'; // Tampilkan error
+                errorMsg.style.display = 'block'; 
             }
         });
     </script>
-</body>
-</html>
