@@ -42,22 +42,22 @@
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('role', 'admin');
                 alert("Berhasil login sebagai: Admin");
-                window.location.href = "admin_dashboard.html";
+                window.location.href = "index.html";
             } else if (email === 'adzikry@gmail.id' && pass === '1234') {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('role', 'peserta');
                 alert("Berhasil login sebagai: Pelamar");
-                window.location.href = "peserta_dashboard.html";
+                window.location.href = "index.html";
             } else if (email === 'bayu@gmail.id' && pass === '1234') {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('role', 'client0');
                 alert("Berhasil login sebagai: Client 0");
-                window.location.href = "peserta_dashboard.html";
+                window.location.href = "index.html";
             } else if (email === 'ida@gmail.id' && pass === '1234') {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('role', 'client1');
                 alert("Berhasil login sebagai: Client 1");
-                window.location.href = "peserta_dashboard.html";
+                window.location.href = "index.html";
             } else {
                 errorMsg.style.display = 'block'; 
             }
