@@ -5,34 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koperasi Konsumen Karyawan PT Len Industri - Kopkarlen</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* CSS Tambahan untuk Profile Dropdown */
+        .profile-dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-avatar-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #0056b3;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .profile-avatar-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background-color: #ffffff;
+            min-width: 170px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-menu a, .dropdown-menu button {
+            color: #333333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown-menu a:hover, .dropdown-menu button:hover {
+            background-color: #f1f1f1;
+            color: #0056b3;
+        }
+
+        .dropdown-menu .logout-btn {
+            border-top: 1px solid #eeeeee;
+            color: #d9534f;
+        }
+
+        .dropdown-menu .logout-btn:hover {
+            background-color: #fdf2f2;
+            color: #c9302c;
+        }
+
+        .show-dropdown {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar / Header -->
     <header class="navbar">
         <div class="logo-container">
-            <!-- Tempatkan gambar logo Kopkarlen asli di sini jika ada -->
             <h1 class="logo-text">KopKarLen</h1> 
         </div>
         <nav class="nav-menu">
             <a href="#home">HOME</a>
             <a href="#about">ABOUT</a>
-            <a href="#visi-misi">VISI MISI</a>
-            <a href="#galeri">GALERI</a>
-            <a href="#kontak">KONTAK</a>
-            <!-- Tambahkan id pada Karir dan Login -->
+            <a href="#vision">VISI MISI</a>
+            <a href="#gallery">GALERI</a>
+            <a href="#contact">KONTAK</a>
             <a href="#" id="nav-karir" class="nav-highlight">KARIR</a>
-            <a href="login.html" id="nav-login" class="btn-nav-login">LOGIN</a>
+
+            <!-- Wadah untuk Tombol Login ATAU Profile Avatar -->
+            <div id="nav-user-container">
+                <a href="login.html" id="nav-login" class="btn-nav-login">LOGIN</a>
+            </div>
         </nav>
     </header>
 
-    <!-- Hero Section (Meniru tampilan ori) -->
+    <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="hero-content">
             <h2>KOPERASI KONSUMEN<br>KARYAWAN PT LEN INDUSTRI (PERSERO)</h2>
             <h1>Tumbuh Bersama,<br>Berdaya, dan Sejahtera</h1>
         </div>
         
-        <!-- Action Buttons (Unit-unit) -->
+        <!-- Action Buttons -->
         <div class="unit-buttons">
             <div class="unit-btn">🛒 Unit Pertokoan</div>
             <div class="unit-btn">💰 Unit Simpan Pinjam</div>
@@ -41,42 +119,183 @@
         </div>
     </section>
 
-    <!-- About Section (Dummy content) -->
-    <section id="about" class="about-section">
-        <h2>ABOUT</h2>
-        <p>Konten About Kopkarlen...</p>
-    </section>
-<!-- Script Pengecekan Sesi Login -->
+    <!-- About Section -->
+    <section id="about">
+  <div class="container">
+    <h2 class="section-title">ABOUT</h2>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p><b>Koperasi Konsumen Karyawan PT Len Industri (Persero) atau KopKarLen</b> merupakan koperasi yang didirikan sebagai wadah usaha bersama bagi karyawan Len Incorporated dengan berlandaskan prinsip kekeluargaan dan kegotongroyongan.</p>
+        <p>Dalam menjalankan perannya, KopKarLen terus mengembangkan berbagai unit usaha, meliputi <b>Unit Pertokoan, Unit Simpan Pinjam, Unit Bisnis, serta Unit Rental &amp; Jasa</b>, untuk memenuhi kebutuhan anggota, mendukung kebutuhan perusahaan, dan membangun kerja sama yang saling menguntungkan.</p>
+        <p><b>Koperasi Konsumen Karyawan PT Len Industri (Persero) dibentuk dengan tujuan untuk:</b></p>
+        <ol>
+          <li>Meningkatkan kesejahteraan anggota melalui kegiatan usaha koperasi yang memberikan manfaat bagi anggota.</li>
+          <li>Memenuhi kebutuhan anggota melalui penyediaan barang dan jasa yang dibutuhkan.</li>
+          <li>Mendukung kebutuhan perusahaan dan pihak lainnya melalui kegiatan usaha dan pengadaan barang maupun jasa.</li>
+          <li>Mengembangkan usaha koperasi secara berkelanjutan berdasarkan prinsip kekeluargaan dan saling menguntungkan.</li>
+          <li>Meningkatkan pemahaman dan pengetahuan anggota mengenai perkoperasian.</li>
+        </ol>
+      </div>
+      <img class="about-photo" src="https://www.kopkarlen.coop.id/assets/images/Recipes-1789456214-537.jpg" alt="Gedung KopKarLen">
+    </div>
+  </div>
+</section>
+<section class="vision" id="vision">
+  <div class="container">
+    <div class="vm-list">
+      <div class="vm-item">
+        <div class="vm-icon">✦</div>
+        <div><h3>VISION</h3><p>Menjadi mitra profesional yang mandiri, terpercaya, dan memberikan nilai tambah bagi anggota dan mitra.</p></div>
+      </div>
+      <div class="vm-item">
+        <div class="vm-icon">◎</div>
+        <div><h3>MISSION</h3><p>Meningkatkan kesejahteraan anggota melalui unit usaha yang produktif dan berkelanjutan · Menjalin kemitraan yang profesional dan saling menguntungkan · Memberikan layanan yang inovatif dan bermanfaat bagi anggota · Mendorong tata kelola berbasis KOP PUR.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title">GALERI</h2>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<section class="board">
+  <div class="container">
+    <h2 class="section-title">SUSUNAN PENGURUS DAN PENGAWAS</h2>
+    <div class="board-grid">
+      <div class="person"><img src="" alt="ILHAM NUGRAHA"><h4>ILHAM NUGRAHA</h4><p>Ketua</p></div><div class="person"><img src="" alt="AMY ELVA SILVIANY"><h4>AMY ELVA SILVIANY</h4><p>Sekretaris</p></div><div class="person"><img src="" alt="DEDY SUBKHAN"><h4>DEDY SUBKHAN</h4><p>Bendahara</p></div><div class="person"><img src="" alt="RESTU TRI GUSTIAWAN"><h4>RESTU TRI GUSTIAWAN</h4><p>Ketua Pengawas</p></div><div class="person"><img src="" alt="ADI PAMUNGKU"><h4>ADI PAMUNGKU</h4><p>Anggota Pengawas</p></div><div class="person"><img src="" alt="NIA HERMIYANTI"><h4>NIA HERMIYANTI</h4><p>Anggota Pengawas</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-note">Koperasi Konsumen Karyawan PT Len Industri (Persero)</div>
+      <span>f</span><span>𝕏</span><span>◎</span><span>in</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+<div class="lightbox" id="lightbox"><div class="close" id="close">×</div><img id="lightboxImg" src="" alt=""></div>
+
+    <!-- Script Pengecekan Sesi Login -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Ambil data sesi dari browser
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const role = localStorage.getItem('role');
-            
-            const karirLink = document.getElementById('nav-karir');
-            const loginLink = document.getElementById('nav-login');
+            const username = localStorage.getItem('username') || 'User';
 
-            // Logika pencegatan tombol Karir
+            const karirLink = document.getElementById('nav-karir');
+            const userContainer = document.getElementById('nav-user-container');
+
+            // 1. Logika Pencegatan Tombol Karir
             karirLink.addEventListener('click', function(e) {
                 if (!isLoggedIn) {
-                    e.preventDefault(); // Cegah pindah halaman
+                    e.preventDefault();
                     alert("Silakan login terlebih dahulu untuk melihat lowongan Karir.");
-                    window.location.href = "login.html"; // Lempar ke halaman login
+                    window.location.href = "login.html";
                 } else {
-                    window.location.href = "karir.html"; // Izinkan masuk
+                    window.location.href = "karir.html";
                 }
             });
 
-            // Ubah tombol "LOGIN" menjadi "DASHBOARD" jika sudah login
+            // 2. Logika Perubahan Tombol Login -> Profile Avatar + Dropdown
             if (isLoggedIn) {
-                loginLink.textContent = "DASHBOARD";
+                // Ambil inisial huruf depan untuk avatar
+                const initial = username.charAt(0).toUpperCase();
+
+                // Tentukan link dan label berdasarkan role
+                let dashboardOrProfileLink = '#';
+                let dashboardOrProfileText = '';
+
                 if (role === 'admin') {
-                    loginLink.href = "admin_dashboard.html";
+                    dashboardOrProfileLink = 'admin_dashboard.html';
+                    dashboardOrProfileText = 'Dashboard Admin';
                 } else {
-                    loginLink.href = "peserta_dashboard.html";
+                    dashboardOrProfileLink = 'peserta_dashboard.html'; // Sesuaikan dengan file profil pelamar Anda
+                    dashboardOrProfileText = 'Profil Saya';
                 }
+
+                // Render Elemen Profile Avatar dan Dropdown Menu
+                userContainer.innerHTML = `
+                    <div class="profile-dropdown-container">
+                        <button class="profile-avatar-btn" id="avatarBtn" title="${username}">
+                            ${initial}
+                        </button>
+                        <div class="dropdown-menu" id="profileDropdown">
+                            <a href="${dashboardOrProfileLink}">${dashboardOrProfileText}</a>
+                            <button id="btnLogout" class="logout-btn">Logout</button>
+                        </div>
+                    </div>
+                `;
+
+                // Event Listener untuk Toggle Dropdown
+                const avatarBtn = document.getElementById('avatarBtn');
+                const profileDropdown = document.getElementById('profileDropdown');
+
+                avatarBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('show-dropdown');
+                });
+
+                // Tutup dropdown jika mengklik di luar area avatar
+                document.addEventListener('click', function(e) {
+                    if (!avatarBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                        profileDropdown.classList.remove('show-dropdown');
+                    }
+                });
+
+                // Event Listener untuk Logout
+                document.getElementById('btnLogout').addEventListener('click', function() {
+                    // Hapus data session
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('role');
+                    localStorage.removeItem('username');
+                    
+                    alert("Anda telah berhasil logout.");
+                    window.location.href = "index.html"; // Refresh kembali ke halaman utama
+                });
             }
         });
     </script>
+      <script>
+  const galleryImages = ['https://www.kopkarlen.coop.id/assets/images/Galeri-1790044759-889.jpg', 'https://www.kopkarlen.coop.id/assets/images/Galeri-1790044734-745.jpg', 'https://www.kopkarlen.coop.id/assets/images/Galeri-1790044693-539.jpg', 'https://www.kopkarlen.coop.id/assets/images/Galeri-1790044510-159.jpg', 'https://www.kopkarlen.coop.id/assets/images/Galeri-1790044471-594.jpg', 'https://www.kopkarlen.coop.id/assets/images/Galeri-1790044288-830.jpg'];
+  const galleryTitles = ['Kegiatan Koperasi', 'Kebersamaan Pengurus', 'Agenda Perusahaan', 'Kegiatan Internal', 'Pelatihan & Pengembangan', 'Aktivitas Unit', 'Kegiatan Pelayanan', 'Pertemuan Anggota', 'Kunjungan & Sosialisasi', 'Rapat Anggota', 'Forum Internal', 'Dokumentasi Kegiatan'];
+
+  const galleryGrid = document.getElementById('galleryGrid');
+  galleryImages.forEach((src, i) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    card.innerHTML = `<img src="${src}" alt="${galleryTitles[i]}"><div class="gallery-caption">${galleryTitles[i]}</div>`;
+    card.addEventListener('click', () => {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    });
+    galleryGrid.appendChild(card);
+  });
+
+  document.getElementById('close').onclick = () => document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target.id === 'lightbox') e.currentTarget.classList.remove('open');
+  });
+
+  const menu = document.getElementById('menu');
+  const navLinks = document.getElementById('navLinks');
+  menu.onclick = () => navLinks.classList.toggle('open');
+  document.querySelectorAll('.nav-links a').forEach(a => a.onclick = () => navLinks.classList.remove('open'));
+
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    toTop.style.display = window.scrollY > 500 ? 'grid' : 'none';
+  });
+  toTop.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+  </script>
 </body>
 </html>
