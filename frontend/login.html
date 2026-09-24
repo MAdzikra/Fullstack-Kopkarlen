@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kopkarlen</title>
+    <style>
+        /* CSS dasar untuk halaman Login agar terpisah dari style landing page */
+        body { background-color: #e0e0e0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        .login-box { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; width: 100%; max-width: 400px; }
+        .login-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .login-box button { width: 100%; padding: 12px; background-color: #32cd32; border: none; border-radius: 4px; color: white; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px;}
+        .error-msg { color: red; font-size: 14px; display: none; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login Sistem</h2>
+        <p style="margin-bottom: 20px; font-size: 14px; color: #666;">Silakan masukkan kredensial Anda</p>
+        
+        <p id="error-message" class="error-msg">Email atau password salah!</p>
+
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Logika Javascript Dummy 4 Role -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+            
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-message');
+            
+            errorMsg.style.display = 'none'; // Sembunyikan error dulu
+
+            // Logika pengecekan role
+            if (email === 'firgi@gmail.id' && pass === '1234') {
+                alert("Berhasil login sebagai: Admin");
+                window.location.href = "admin_dashboard.html"; // Arahkan ke dashboard admin
+            } else if (email === 'adzikry@gmail.id' && pass === '1234') {
+                alert("Berhasil login sebagai: Pelamar");
+                window.location.href = "peserta_dashboard.html"; // Arahkan ke dashboard peserta
+            } else if (email === 'bayu@gmail.id' && pass === '1234') {
+                alert("Berhasil login sebagai: Client 0");
+                window.location.href = "peserta_dashboard.html"; // Sesuai instruksimu, diarahkan ke dashboard peserta
+            } else if (email === 'ida@gmail.id' && pass === '1234') {
+                alert("Berhasil login sebagai: Client 1");
+                window.location.href = "peserta_dashboard.html"; // Sesuai instruksimu, diarahkan ke dashboard peserta
+            } else {
+                errorMsg.style.display = 'block'; // Tampilkan error
+            }
+        });
+    </script>
+</body>
+</html>
