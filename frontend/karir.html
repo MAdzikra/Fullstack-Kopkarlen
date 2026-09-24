@@ -6,7 +6,7 @@
     <title>Karir - Kopkarlen</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* CSS untuk Profile Avatar & Dropdown Menu */
+        /* CSS Profile Avatar & Dropdown Menu */
         .profile-dropdown-container {
             position: relative;
             display: inline-block;
@@ -79,6 +79,137 @@
         .show-dropdown {
             display: block;
         }
+
+        /* Badge Status */
+        .badge-applied {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #ffc107;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-container {
+            background: #ffffff;
+            width: 90%;
+            max-width: 550px;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal-body {
+            font-size: 14px;
+            color: #444;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #0056b3;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 3px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 16px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body class="dashboard-body">
@@ -87,10 +218,11 @@
         <nav class="nav-menu">
             <a href="index.html">HOME</a>
             <a href="index.html#about">ABOUT</a>
-            <a href="index.html#visi-misi">VISI MISI</a>
-            <a href="index.html#galeri">GALERI</a>
-            <a href="index.html#kontak">KONTAK</a>
+            <a href="index.html#vision">VISI MISI</a>
+            <a href="index.html#gallery">GALERI</a>
+            <a href="index.html#contact">KONTAK</a>
             <a href="karir.html" class="nav-highlight">KARIR</a>
+            
             <!-- Profile Avatar + Dropdown -->
             <div id="nav-user-container">
                 <div class="profile-dropdown-container">
@@ -107,70 +239,293 @@
     </header>
 
     <div class="dashboard-container">
+        <!-- Tab Navigasi -->
         <div class="tabs">
-            <button class="tab-btn active">Lowongan</button>
-            <button class="tab-btn">Hasil</button>
+            <button class="tab-btn active" id="tabLowonganBtn">Lowongan</button>
+            <button class="tab-btn" id="tabHasilBtn">Hasil</button>
         </div>
 
-        <!-- Card Fullstack Developer -->
-        <div class="job-card">
-            <div class="job-header">
-                <h2>Fullstack Developer</h2>
-                <button class="btn-primary">Lamar</button>
+        <!-- CONTAINER TAB LOWONGAN -->
+        <div id="tabLowonganContent">
+            <!-- Card Fullstack Developer -->
+            <div class="job-card" data-job-id="job-fullstack" data-job-title="Fullstack Developer">
+                <div class="job-header">
+                    <h2>Fullstack Developer</h2>
+                    <div class="action-container">
+                        <button class="btn-primary btn-lamar">Lamar</button>
+                    </div>
+                </div>
+                <h3>Deskripsi</h3>
+                <p>Kami sedang mencari seorang Full-Stack Developer yang handal untuk bergabung dengan tim teknologi kami. Anda akan bertanggung jawab merancang, mengembangkan, dan memelihara aplikasi web dari awal hingga tahap perilisan. Peran ini menuntut kemampuan untuk mengelola antarmuka pengguna (front-end) sekaligus infrastruktur dasar dan basis data (back-end).</p>
+                <h3>Requirements</h3>
+                <ol>
+                    <li>Menguasai teknologi dasar web seperti HTML5, CSS3, dan JavaScript (ES6+)/TypeScript.</li>
+                    <li>Kemampuan merancang, mengoptimalkan, dan mengelola database Relasional (PostgreSQL, MySQL) maupun Non-Relasional (MongoDB, Redis).</li>
+                    <li>Pengalaman menggunakan Git untuk version control dan kolaborasi tim (GitHub/GitLab).</li>
+                </ol>
             </div>
-            <h3>Deskripsi</h3>
-            <p>Kami sedang mencari seorang Full-Stack Developer yang handal untuk bergabung dengan tim teknologi kami. Anda akan bertanggung jawab merancang, mengembangkan, dan memelihara aplikasi web dari awal hingga tahap perilisan. Peran ini menuntut kemampuan untuk mengelola antarmuka pengguna (front-end) sekaligus infrastruktur dasar dan basis data (back-end).</p>
-            <h3>Requirements</h3>
-            <ol>
-                <li>Menguasai teknologi dasar web seperti HTML5, CSS3, dan JavaScript (ES6+)/TypeScript.</li>
-                <li>Kemampuan merancang, mengoptimalkan, dan mengelola database Relasional (PostgreSQL, MySQL) maupun Non-Relasional (MongoDB, Redis).</li>
-                <li>Pengalaman menggunakan Git untuk version control dan kolaborasi tim (GitHub/GitLab).</li>
-            </ol>
+
+            <!-- Card DevOps Engineer -->
+            <div class="job-card" data-job-id="job-devops" data-job-title="DevOps Engineer">
+                <div class="job-header">
+                    <h2>DevOps Engineer</h2>
+                    <div class="action-container">
+                        <button class="btn-primary btn-lamar">Lamar</button>
+                    </div>
+                </div>
+                <h3>Deskripsi</h3>
+                <p>Kami sedang mencari seorang DevOps Engineer yang berpengalaman untuk menjembatani celah antara tim pengembangan perangkat lunak (Development) dan tim operasional (Operations). Anda akan bertanggung jawab untuk membangun, mengotomatisasi, dan memelihara infrastruktur cloud, pipeline CI/CD, serta memastikan sistem aplikasi kami berjalan dengan performa tinggi, aman, dan memiliki tingkat ketersediaan yang tinggi (highly available).</p>
+            </div>
         </div>
 
-        <!-- Card DevOps Engineer -->
-        <div class="job-card">
-            <div class="job-header">
-                <h2>DevOps Engineer</h2>
-                <button class="btn-primary">Lamar</button>
+        <!-- CONTAINER TAB HASIL -->
+        <div id="tabHasilContent" style="display: none;">
+            <div id="hasilList"></div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP VERIFIKASI & FORM LAMARAN -->
+    <div class="modal-overlay" id="applicationModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 id="modalJobTitle">Verifikasi Data Lamaran</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
             </div>
-            <h3>Deskripsi</h3>
-            <p>Kami sedang mencari seorang DevOps Engineer yang berpengalaman untuk menjembatani celah antara tim pengembangan perangkat lunak (Development) dan tim operasional (Operations). Anda akan bertanggung jawab untuk membangun, mengotomatisasi, dan memelihara infrastruktur cloud, pipeline CI/CD, serta memastikan sistem aplikasi kami berjalan dengan performa tinggi, aman, dan memiliki tingkat ketersediaan yang tinggi (highly available).</p>
+            <form id="applicationForm">
+                <div class="modal-body">
+                    <!-- Step 1: Verifikasi Data Diri & CV -->
+                    <div class="info-box">
+                        <strong>Verifikasi Profil & CV:</strong>
+                        <p style="margin: 5px 0 0 0;">
+                            Nama: <span id="modalUserName">John Doe</span><br>
+                            Status CV: <span style="color: #28a745; font-weight: bold;">✔ Terunggah (CV_John_Doe.pdf)</span>
+                        </p>
+                        <small style="color: #666; display: block; margin-top: 4px;">Perlu memperbarui data? <a href="peserta_dashboard.html" target="_blank">Edit Profil Saya</a></small>
+                    </div>
+
+                    <!-- Step 2: Pertanyaan Singkat -->
+                    <div class="form-group">
+                        <label for="expectedSalary">Ekspektasi Gaji Bulanan (Rp)</label>
+                        <input type="number" id="expectedSalary" placeholder="Contoh: 8000000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="noticePeriod">Kapan Anda Siap Mulai Bekerja?</label>
+                        <select id="noticePeriod" required>
+                            <option value="">-- Pilih Ketersediaan --</option>
+                            <option value="Secepatnya">Secepatnya (Immediate)</option>
+                            <option value="1 Minggu">1 Minggu Notification</option>
+                            <option value="1 Bulan">1 Bulan Notification</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 3: Persetujuan -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consentCheck" required>
+                        <label for="consentCheck">Saya menyatakan bahwa data profil dan CV yang digunakan adalah benar dan terbaru. Saya bersedia mengikuti seluruh tahapan seleksi.</label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelModalBtn">Batal</button>
+                    <button type="submit" class="btn-primary">Kirim Lamaran</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Ambil username pelamar dari localStorage jika ada
+            // 1. Navbar Profile Dropdown Logic
             const username = localStorage.getItem('username') || 'User';
             const avatarBtn = document.getElementById('avatarBtn');
             const profileDropdown = document.getElementById('profileDropdown');
 
-            // Atur inisial avatar berdasarkan nama pelamar
             if (avatarBtn) {
                 avatarBtn.textContent = username.charAt(0).toUpperCase();
                 avatarBtn.title = username;
             }
 
-            // Toggle Dropdown saat Avatar Klik
             avatarBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 profileDropdown.classList.toggle('show-dropdown');
             });
 
-            // Sembunyikan Dropdown jika klik di luar
             document.addEventListener('click', function(e) {
                 if (!avatarBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
                     profileDropdown.classList.remove('show-dropdown');
                 }
             });
 
-            // Fungsi Logout
             document.getElementById('btnLogout').addEventListener('click', function() {
                 localStorage.clear();
                 alert("Anda telah berhasil logout.");
                 window.location.href = "index.html";
             });
+
+            // 2. Tab & System Limit Lowongan (Maksimal 1 Lamaran)
+            let activeApplication = localStorage.getItem('activeApplication') ? 
+                JSON.parse(localStorage.getItem('activeApplication')) : null;
+
+            const tabLowonganBtn = document.getElementById('tabLowonganBtn');
+            const tabHasilBtn = document.getElementById('tabHasilBtn');
+            const tabLowonganContent = document.getElementById('tabLowonganContent');
+            const tabHasilContent = document.getElementById('tabHasilContent');
+            const hasilList = document.getElementById('hasilList');
+
+            // Modal Elements
+            const modal = document.getElementById('applicationModal');
+            const modalJobTitle = document.getElementById('modalJobTitle');
+            const modalUserName = document.getElementById('modalUserName');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const cancelModalBtn = document.getElementById('cancelModalBtn');
+            const applicationForm = document.getElementById('applicationForm');
+
+            let selectedJobId = null;
+            let selectedJobTitle = null;
+
+            // Switch Tab
+            tabLowonganBtn.addEventListener('click', function() {
+                tabLowonganBtn.classList.add('active');
+                tabHasilBtn.classList.remove('active');
+                tabLowonganContent.style.display = 'block';
+                tabHasilContent.style.display = 'none';
+            });
+
+            tabHasilBtn.addEventListener('click', function() {
+                tabHasilBtn.classList.add('active');
+                tabLowonganBtn.classList.remove('active');
+                tabLowonganContent.style.display = 'none';
+                tabHasilContent.style.display = 'block';
+                renderHasilTab();
+            });
+
+            // Update UI Tab Lowongan
+            function updateJobCardsUI() {
+                const jobCards = document.querySelectorAll('#tabLowonganContent .job-card');
+
+                jobCards.forEach(card => {
+                    const jobId = card.getAttribute('data-job-id');
+                    const actionContainer = card.querySelector('.action-container');
+
+                    if (activeApplication && activeApplication.jobId === jobId) {
+                        actionContainer.innerHTML = `
+                            <span class="badge-applied">Sudah Dilamar</span>
+                            <button class="btn-danger btn-batal" style="margin-left: 10px;">Batal Lamar</button>
+                        `;
+                    } else {
+                        actionContainer.innerHTML = `
+                            <button class="btn-primary btn-lamar">Lamar</button>
+                        `;
+                    }
+                });
+            }
+
+            // Click Handler: "Lamar" & "Batal Lamar"
+            document.addEventListener('click', function(e) {
+                // Skenario 1: Klik Lamar -> Buka Modal (Jika belum ada lamaran aktif)
+                if (e.target.classList.contains('btn-lamar')) {
+                    if (activeApplication) {
+                        alert("Batas Maksimal Ditecapai: Anda hanya dapat melamar 1 lowongan aktif secara bersamaan. Batalkan lamaran sebelumnya jika ingin melamar posisi ini.");
+                        return;
+                    }
+
+                    const card = e.target.closest('.job-card');
+                    selectedJobId = card.getAttribute('data-job-id');
+                    selectedJobTitle = card.getAttribute('data-job-title');
+
+                    // Isi data modal
+                    modalJobTitle.textContent = `Verifikasi Lamaran: ${selectedJobTitle}`;
+                    modalUserName.textContent = username;
+                    applicationForm.reset();
+
+                    // Tampilkan modal
+                    modal.style.display = 'flex';
+                }
+
+                // Skenario 2: Klik Batal Lamar
+                if (e.target.classList.contains('btn-batal')) {
+                    if (confirm(`Apakah Anda yakin ingin membatalkan lamaran untuk posisi ${activeApplication.jobTitle}?`)) {
+                        activeApplication = null;
+                        localStorage.removeItem('activeApplication');
+                        alert("Lamaran berhasil dibatalkan.");
+                        updateJobCardsUI();
+                        renderHasilTab();
+                    }
+                }
+            });
+
+            // Modal Handlers
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            cancelModalBtn.addEventListener('click', closeModal);
+
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Submit Form Lamaran Modal
+            applicationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const expectedSalary = document.getElementById('expectedSalary').value;
+                const noticePeriod = document.getElementById('noticePeriod').value;
+
+                // Simpan Lamaran Aktif tunggal ke localStorage
+                activeApplication = {
+                    jobId: selectedJobId,
+                    jobTitle: selectedJobTitle,
+                    salary: expectedSalary,
+                    availability: noticePeriod,
+                    appliedAt: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+                };
+
+                localStorage.setItem('activeApplication', JSON.stringify(activeApplication));
+
+                alert(`Selamat! Lamaran Anda untuk ${selectedJobTitle} berhasil dikirim.`);
+                closeModal();
+                updateJobCardsUI();
+            });
+
+            // Render Tab Hasil
+            function renderHasilTab() {
+                hasilList.innerHTML = '';
+
+                if (!activeApplication) {
+                    hasilList.innerHTML = `
+                        <div class="empty-state">
+                            <h3>Belum Ada Lamaran Aktif</h3>
+                            <p>Anda belum melamar pekerjaan apa pun. Silakan pilih 1 lowongan yang paling sesuai di tab <strong>Lowongan</strong>.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const originalCard = document.querySelector(`.job-card[data-job-id="${activeApplication.jobId}"]`);
+                const description = originalCard ? originalCard.querySelector('p').innerText : '';
+
+                const resultCard = document.createElement('div');
+                resultCard.className = 'job-card';
+                resultCard.innerHTML = `
+                    <div class="status-badge">Status: Sedang Diproses</div>
+                    <div class="job-header">
+                        <h2>${activeApplication.jobTitle}</h2>
+                        <button class="btn-danger btn-batal">Batal Lamar</button>
+                    </div>
+                    <p style="color: #666; font-size: 13px; margin-bottom: 12px;">Dilamar pada: <strong>${activeApplication.appliedAt}</strong></p>
+                    <h3>Deskripsi</h3>
+                    <p>${description}</p>
+                `;
+                hasilList.appendChild(resultCard);
+            }
+
+            // Inisialisasi awal UI
+            updateJobCardsUI();
         });
     </script>
 </body>
