@@ -1,0 +1,599 @@
+/* Profile Dropdown Styling */
+      .profile-dropdown-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .profile-avatar-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #0056b3;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease;
+      }
+
+      .profile-avatar-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        background-color: #ffffff;
+        min-width: 170px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        overflow: hidden;
+        z-index: 1000;
+      }
+
+      .dropdown-menu a,
+      .dropdown-menu button {
+        color: #333333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: background-color 0.2s;
+      }
+
+      .dropdown-menu a:hover,
+      .dropdown-menu button:hover {
+        background-color: #f1f1f1;
+        color: #0056b3;
+      }
+
+      .dropdown-menu .logout-btn {
+        border-top: 1px solid #eeeeee;
+        color: #d9534f;
+      }
+
+      .dropdown-menu .logout-btn:hover {
+        background-color: #fdf2f2;
+        color: #c9302c;
+      }
+
+      .show-dropdown {
+        display: block;
+      }
+
+      /* Status Badge */
+      .badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+
+      .badge-active {
+        background-color: #e6f4ea;
+        color: #137333;
+        border: 1px solid #ceead6;
+      }
+      .badge-inactive {
+        background-color: #fce8e6;
+        color: #c5221f;
+        border: 1px solid #fad2cf;
+      }
+
+      .job-card.is-inactive {
+        opacity: 0.75;
+        background-color: #fafafa;
+        border-left: 4px solid #d9534f;
+      }
+
+      .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn-success:hover {
+        background-color: #218838;
+      }
+
+      /* Modal Overlay */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-overlay.show {
+        display: flex;
+      }
+
+      .modal-content {
+        background-color: #ffffff;
+        width: 90%;
+        max-width: 850px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        padding: 16px 20px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eeeeee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-header h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .modal-close {
+        background: #e0e0e0;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-close:hover {
+        background: #cccccc;
+      }
+
+      .modal-body {
+        padding: 20px;
+        max-height: 75vh;
+        overflow-y: auto;
+      }
+
+      .modal-footer {
+        padding: 12px 20px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #eeeeee;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      /* Form Styling */
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: inherit;
+      }
+
+      /* Container Baris Pelamar */
+      .applicant-row {
+        display: grid;
+        /* Kolom: Nama (Flex 1), Status (110px), Berkas (120px), Skor (90px), Aksi (210px) */
+        grid-template-columns: 1fr 110px 120px 90px 210px;
+        align-items: center;
+        gap: 12px;
+        background-color: #f1f3f5;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      /* Nama Pelamar */
+      .applicant-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Badge Stage / Tahapan */
+      .stage-badge {
+        text-align: center;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 12px;
+        color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .stage-diproses {
+        background-color: #ff9800;
+      }
+      .stage-psikotes {
+        background-color: #9c27b0;
+      }
+      .stage-wawancara {
+        background-color: #00bcd4;
+      }
+      .stage-offering {
+        background-color: #4caf50;
+      }
+      .stage-ditolak {
+        background-color: #f44336;
+      }
+      .stage-diterima {
+        background-color: #2e7d32;
+      }
+
+      /* Status Berkas */
+      .doc-status {
+        text-align: center;
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        width: 100%;
+        box-sizing: border-box;
+        display: inline-block;
+      }
+
+      .doc-menunggu {
+        background-color: #fff3e0;
+        color: #e65100;
+      }
+      .doc-sesuai {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+      }
+      .doc-tidak {
+        background-color: #ffebee;
+        color: #c62828;
+      }
+
+      /* Skor Badge */
+      .score-badge {
+        text-align: center;
+        background-color: #e8eaf6;
+        color: #2c3892;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 6px 8px;
+        border-radius: 6px;
+        border: 1px solid #c5cae9;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Group Tombol Aksi (Di Sebelah Kanan) */
+      .action-group {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+      }
+
+      /* Style Tombol Aksi */
+      .action-btn {
+        background: none;
+        border: none;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+        white-space: nowrap;
+      }
+
+      .action-btn-primary {
+        color: #1976d2;
+      }
+
+      .action-btn-secondary {
+        color: #2c3892;
+      }
+
+      .action-text-muted {
+        color: #9e9e9e;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .action-link {
+        color: #0056b3;
+        text-decoration: underline;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        background: none;
+        border: none;
+        padding: 0 5px;
+      }
+      .action-link:hover {
+        color: #003366;
+      }
+
+      .job-card h3 {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333333;
+        margin-top: 15px;
+        margin-bottom: 6px;
+      }
+
+      .job-desc-text {
+        font-family: inherit;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555555;
+        margin: 0;
+      }
+
+      .job-req-text {
+        font-family: inherit;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555555;
+        margin: 0;
+        padding-left: 20px; /* Merapikan inden titik bullet */
+      }
+
+      .job-req-text li {
+        font-family: inherit;
+        margin-bottom: 4px;
+      }
+
+      /* Table & Pagination Styling */
+      .employee-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eeeeee;
+        color: #333333;
+      }
+
+      .employee-table tbody tr:hover {
+        background-color: #f9fafb;
+      }
+
+      .page-btn {
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 13px;
+        transition: all 0.2s;
+      }
+
+      .page-btn.active {
+        background-color: #0056b3;
+        color: #fff;
+        border-color: #0056b3;
+      }
+
+      .page-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #tabKaryawanContent {
+        padding-left: 275px;
+        padding-right: 275px;
+        padding-bottom: 30px;
+        box-sizing: border-box;
+      }
+
+      .employee-table th,
+      .employee-table td {
+        padding: 16px 16px;
+        border-bottom: 1px solid #eeeeee;
+        color: #333333;
+      }
+
+      /* Styling Accordion Detail Pelamar */
+      .accordion-item {
+        background: #e0e0e0;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+
+      .accordion-header {
+        padding: 10px 15px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #dcdcdc;
+      }
+
+      .accordion-content {
+        padding: 15px;
+        background-color: #fff;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      /* Grid & Tombol Aksi Modal Rekrutmen */
+      .form-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .btn-send {
+        background-color: #5cdb5c;
+        color: #000;
+        font-weight: bold;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .btn-send:hover {
+        background-color: #45c445;
+      }
+
+      .btn-reject {
+        background-color: #ff3333;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .btn-reject:hover {
+        background-color: #cc0000;
+      }
+
+      .btn-orange {
+        background-color: #ff9800;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+      /* Box Penilaian Evaluasi Admin */
+      .eval-box {
+        background-color: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+
+      .eval-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      /* 1. Style Nilai / Skor */
+      .input-score {
+        width: 100%;
+        padding: 8px 10px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      /* 2. Style Kesesuaian Berkas */
+      .btn-group-doc {
+        display: flex;
+        gap: 8px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
+
+      .btn-doc-check {
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .btn-doc-pass {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        border-color: #a5d6a7;
+      }
+
+      .btn-doc-fail {
+        background-color: #ffebee;
+        color: #c62828;
+        border-color: #ef9a9a;
+      }
+
+      /* Badges di Daftar Pelamar */
+      .score-badge {
+        background-color: #e8eaf6;
+        color: #2c3892;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+
+      .doc-status {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .doc-menunggu {
+        background-color: #fff3e0;
+        color: #ef6c00;
+      }
+      .doc-sesuai {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+      }
+      .doc-tidak {
+        background-color: #ffebee;
+        color: #c62828;
+      }

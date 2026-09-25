@@ -1,188 +1,640 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Admin - Kopkarlen</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* CSS untuk Profile Avatar & Dropdown Menu */
-        .profile-dropdown-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-avatar-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #0056b3;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease;
-        }
-
-        .profile-avatar-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 50px;
-            background-color: #ffffff;
-            min-width: 170px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            overflow: hidden;
-            z-index: 1000;
-        }
-
-        .dropdown-menu a, .dropdown-menu button {
-            color: #333333;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            font-size: 14px;
-            cursor: pointer;
-            box-sizing: border-box;
-            transition: background-color 0.2s;
-        }
-
-        .dropdown-menu a:hover, .dropdown-menu button:hover {
-            background-color: #f1f1f1;
-            color: #0056b3;
-        }
-
-        .dropdown-menu .logout-btn {
-            border-top: 1px solid #eeeeee;
-            color: #d9534f;
-        }
-
-        .dropdown-menu .logout-btn:hover {
-            background-color: #fdf2f2;
-            color: #c9302c;
-        }
-
-        .show-dropdown {
-            display: block;
-        }
-    </style>
-</head>
-<body class="dashboard-body">
-
-    <!-- Navbar Disamakan dengan Halaman Utama (index.html) -->
+    <link rel="stylesheet" href="/Fullstack-Kopkarlen/frontend/assets/css/style.css" />
+    <link rel="stylesheet" href="/Fullstack-Kopkarlen/frontend/assets/css/admin.css">
+  </head>
+  <body class="dashboard-body">
+    <!-- Header Navbar -->
     <header class="navbar">
-        <div class="logo-container">
-            <h1 class="logo-text">KopKarLen</h1> 
-        </div>
-        <nav class="nav-menu">
-            <a href="index.html#home">HOME</a>
-            <!-- <a href="index.html#about">ABOUT</a>
-            <a href="index.html#visi-misi">VISI MISI</a>
-            <a href="index.html#galeri">GALERI</a>
-            <a href="index.html#kontak">KONTAK</a> -->
-            <a href="karir.html" id="nav-karir" class="nav-highlight">KARIR</a>
+      <div class="logo-container">
+        <h1 class="logo-text">KopKarLen</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html#home">HOME</a>
+        <a href="admin_dashboard.html" id="nav-karir" class="nav-highlight"
+          >KARIR</a
+        >
 
-            <!-- Profile Avatar + Dropdown -->
-            <div id="nav-user-container">
-                <div class="profile-dropdown-container">
-                    <button class="profile-avatar-btn" id="avatarBtn" title="Admin">
-                        A
-                    </button>
-                    <div class="dropdown-menu" id="profileDropdown">
-                        <a href="admin_dashboard.html">Dashboard Admin</a>
-                        <button id="btnLogout" class="logout-btn">Logout</button>
-                    </div>
-                </div>
+        <div id="nav-user-container">
+          <div class="profile-dropdown-container">
+            <button class="profile-avatar-btn" id="avatarBtn" title="Admin">
+              A
+            </button>
+            <div class="dropdown-menu" id="profileDropdown">
+              <a href="admin_dashboard.html">Dashboard Admin</a>
+              <button id="btnLogout" class="logout-btn">Logout</button>
             </div>
-        </nav>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <!-- Konten Dashboard Admin -->
+    <!-- Container Utama Dashboard -->
     <div class="dashboard-container">
-        <div class="tabs">
-            <button class="tab-btn active">Kelola Lowongan</button>
-            <button class="tab-btn">Kelola Karyawan</button>
-        </div>
+      <div class="tabs">
+        <button class="tab-btn active">Kelola Lowongan</button>
+        <button class="tab-btn">Kelola Karyawan</button>
+      </div>
 
-        <button class="btn-primary" style="margin-bottom: 20px;">+ Tambah Lowongan Kerja</button>
+      <button
+        class="btn-primary"
+        id="btnTambahLowongan"
+        style="margin-bottom: 20px"
+      >
+        + Tambah Lowongan Kerja
+      </button>
 
-        <!-- Card Admin Fullstack Developer -->
-        <div class="job-card">
-            <div class="job-header">
-                <h2>Fullstack Developer</h2>
-                <div class="action-buttons">
-                    <button class="btn-secondary">Lihat Data Pelamar</button>
-                    <button class="btn-secondary">Edit</button>
-                    <button class="btn-danger">Non-aktifkan</button>
-                </div>
+      <div id="jobListContainer">
+        <!-- Card Lowongan 1 -->
+        <div class="job-card" data-job-id="1">
+          <div class="job-header">
+            <h2>
+              <span class="job-title-text">Fullstack Developer</span>
+              <span class="badge badge-active">Aktif</span>
+            </h2>
+            <div class="action-buttons">
+              <button class="btn-secondary btn-pelamar">
+                Lihat Data Pelamar
+              </button>
+              <button class="btn-secondary btn-edit">Edit</button>
+              <button class="btn-danger btn-toggle-status">Non-aktifkan</button>
             </div>
-            <h3>Deskripsi</h3>
-            <p>Kami sedang mencari seorang Full-Stack Developer yang handal untuk bergabung dengan tim teknologi kami. Anda akan bertanggung jawab merancang, mengembangkan, dan memelihara aplikasi web dari awal hingga tahap perilisan...</p>
+          </div>
+          <h3>Deskripsi</h3>
+          <p class="job-desc-text">
+            Kami sedang mencari seorang Full-Stack Developer yang handal untuk
+            bergabung dengan tim teknologi kami. Anda akan bertanggung jawab
+            merancang, mengembangkan, dan memelihara aplikasi web...
+          </p>
+
+          <h3>Requirement</h3>
+          <ul class="job-req-text">
+            <li>
+              Menguasai HTML, CSS, JavaScript, dan Framework Node.js/React.
+            </li>
+            <li>
+              Kemampuan dalam mengelola database relational & non-relational
+              (MySQL, Redis).
+            </li>
+            <li>Pengalaman minimal 2 tahun di bidang pengembang web.</li>
+          </ul>
         </div>
 
-        <!-- Card Admin DevOps Engineer -->
-        <div class="job-card">
-            <div class="job-header">
-                <h2>DevOps Engineer</h2>
-                <div class="action-buttons">
-                    <button class="btn-secondary">Lihat Data Pelamar</button>
-                    <button class="btn-secondary">Edit</button>
-                    <button class="btn-danger">Non-aktifkan</button>
-                </div>
+        <!-- Card Lowongan 2 -->
+        <div class="job-card" data-job-id="2">
+          <div class="job-header">
+            <h2>
+              <span class="job-title-text">DevOps Engineer</span>
+              <span class="badge badge-active">Aktif</span>
+            </h2>
+            <div class="action-buttons">
+              <button class="btn-secondary btn-pelamar">
+                Lihat Data Pelamar
+              </button>
+              <button class="btn-secondary btn-edit">Edit</button>
+              <button class="btn-danger btn-toggle-status">Non-aktifkan</button>
             </div>
-            <h3>Deskripsi</h3>
-            <p>Kami sedang mencari seorang DevOps Engineer yang berpengalaman untuk menjembatani celah antara tim pengembangan perangkat lunak (Development) dan tim operasional (Operations)...</p>
+          </div>
+          <h3>Deskripsi</h3>
+          <p class="job-desc-text">
+            Kami sedang mencari seorang DevOps Engineer yang berpengalaman untuk
+            menjembatani celah antara tim pengembangan perangkat lunak dan tim
+            operasional...
+          </p>
+
+          <h3>Requirement</h3>
+          <ul class="job-req-text">
+            <li>Memahami konsep CI/CD Pipeline (Jenkins, GitLab CI).</li>
+            <li>
+              Pengalaman mengelola Docker, Kubernetes, dan Cloud Infrastructure
+              (AWS/GCP).
+            </li>
+            <li>
+              Memiliki pemahaman terkait keamanan jaringan dan server Linux.
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
 
-    <!-- Script Interaktivitas Dropdown dan Logout -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Ambil username admin dari localStorage jika ada
-            const username = localStorage.getItem('username') || 'Username';
-            const avatarBtn = document.getElementById('avatarBtn');
-            const profileDropdown = document.getElementById('profileDropdown');
+    <!-- Konten Tab Kelola Karyawan -->
+    <div id="tabKaryawanContent" class="tab-content" style="display: none">
+      <div
+        class="action-header"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          gap: 15px;
+          flex-wrap: wrap;
+        "
+      >
+        <!-- Filter Bar -->
+        <div
+          class="filter-container"
+          style="display: flex; gap: 10px; flex-wrap: wrap; flex: 1"
+        >
+          <input
+            type="text"
+            id="searchKaryawan"
+            placeholder="Cari nama karyawan..."
+            style="
+              padding: 8px 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              min-width: 200px;
+            "
+          />
 
-            // Atur inisial avatar berdasarkan nama admin
-            if (avatarBtn) {
-                avatarBtn.textContent = username.charAt(0).toUpperCase();
-                avatarBtn.title = username;
-            }
+          <select
+            id="filterDivisi"
+            style="
+              padding: 8px 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+            "
+          >
+            <option value="">Semua Divisi</option>
+            <option value="IT & Tech">IT & Tech</option>
+            <option value="HR & Legal">HR & Legal</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+          </select>
 
-            // Toggle Dropdown saat Avatar Klik
-            avatarBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                profileDropdown.classList.toggle('show-dropdown');
-            });
+          <select
+            id="filterPosisi"
+            style="
+              padding: 8px 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+            "
+          >
+            <option value="">Semua Posisi</option>
+            <option value="Fullstack Developer">Fullstack Developer</option>
+            <option value="DevOps Engineer">DevOps Engineer</option>
+            <option value="HR Specialist">HR Specialist</option>
+            <option value="Finance Officer">Finance Officer</option>
+          </select>
+        </div>
 
-            // Sembunyikan Dropdown jika klik di luar
-            document.addEventListener('click', function(e) {
-                if (!avatarBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-                    profileDropdown.classList.remove('show-dropdown');
-                }
-            });
+        <!-- Tombol Buat Laporan -->
+        <button
+          class="btn-primary"
+          id="btnBuatLaporan"
+          style="background-color: #0056b3"
+        >
+          Buat Laporan Baru
+        </button>
+      </div>
 
-            // Fungsi Logout
-            document.getElementById('btnLogout').addEventListener('click', function() {
-                localStorage.clear();
-                alert("Anda telah berhasil logout.");
-                window.location.href = "index.html";
-            });
-        });
-    </script>
-</body>
+      <!-- Tabel Data Karyawan Baru -->
+      <div
+        style="
+          overflow-x: auto;
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        "
+      >
+        <table
+          class="employee-table"
+          style="
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+          "
+        >
+          <thead>
+            <tr
+              style="
+                background-color: #f8f9fa;
+                border-bottom: 2px solid #dee2e6;
+              "
+            >
+              <th style="padding: 12px 15px">No</th>
+              <th style="padding: 12px 15px">Nama Karyawan</th>
+              <th style="padding: 12px 15px">Divisi</th>
+              <th style="padding: 12px 15px">Posisi</th>
+              <th style="padding: 12px 15px">Tanggal Masuk</th>
+            </tr>
+          </thead>
+          <tbody id="employeeTableBody">
+            <!-- Data dipopulasi via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination (10 Data per Halaman) -->
+      <div
+        class="pagination-container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 15px;
+          font-size: 14px;
+          color: #555;
+        "
+      >
+        <span id="paginationInfo">Menampilkan 1-10 dari 0 data</span>
+        <div style="display: flex; gap: 5px" id="paginationButtons">
+          <!-- Tombol pagination dipopulasi via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: Buat Laporan Karyawan Baru -->
+    <div class="modal-overlay" id="modalLaporan">
+      <div class="modal-content" style="max-width: 550px">
+        <div class="modal-header">
+          <h3>Buat Laporan Karyawan Baru</h3>
+          <button class="modal-close" id="btnCloseLaporan">&times;</button>
+        </div>
+        <form id="formLaporan">
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Rentang Tanggal Masuk (Periode)</label>
+              <div style="display: flex; gap: 10px">
+                <input type="date" id="lapTglMulai" required />
+                <span style="align-self: center">s/d</span>
+                <input type="date" id="lapTglSelesai" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="lapDivisi">Berdasarkan Divisi</label>
+              <select id="lapDivisi">
+                <option value="">Semua Divisi</option>
+                <option value="IT & Tech">IT & Tech</option>
+                <option value="HR & Legal">HR & Legal</option>
+                <option value="Finance">Finance</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="lapPosisi">Berdasarkan Posisi</label>
+              <select id="lapPosisi">
+                <option value="">Semua Posisi</option>
+                <option value="Fullstack Developer">Fullstack Developer</option>
+                <option value="DevOps Engineer">DevOps Engineer</option>
+                <option value="HR Specialist">HR Specialist</option>
+                <option value="Finance Officer">Finance Officer</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-secondary" id="btnCancelLaporan">
+              Batal
+            </button>
+            <button
+              type="submit"
+              class="btn-primary"
+              style="background-color: #28a745"
+            >
+              Cetak / Export Laporan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL 1: Form Tambah/Edit Lowongan -->
+    <div class="modal-overlay" id="modalJobForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalJobTitle">Tambah Lowongan Baru</h3>
+          <button class="modal-close" id="btnCloseJobForm">&times;</button>
+        </div>
+        <form id="formJob">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="jobTitle">Judul Posisi</label>
+              <input
+                type="text"
+                id="jobTitle"
+                required
+                placeholder="Contoh: Frontend Developer"
+              />
+            </div>
+            <div class="form-group">
+              <label for="jobStatus">Status Lowongan</label>
+              <select id="jobStatus">
+                <option value="active">Aktif</option>
+                <option value="inactive">Non-Aktif</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="jobDescription">Deskripsi Pekerjaan</label>
+              <textarea
+                id="jobDescription"
+                rows="4"
+                required
+                placeholder="Tuliskan deskripsi pekerjaan..."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="jobRequirement"
+                >Requirement (Ketik per poin dipisah baris baru)</label
+              >
+              <textarea
+                id="jobRequirement"
+                rows="4"
+                required
+                placeholder="Contoh:&#10;- Pendidikan min S1&#10;- Pengalaman 1 tahun"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-secondary" id="btnCancelJobForm">
+              Batal
+            </button>
+            <button type="submit" class="btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL 2: List Data Pelamar (Sesuai Mockup) -->
+    <div class="modal-overlay" id="modalApplicants">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>
+            Detail Pelamar -
+            <span id="applicantJobTitle">Fullstack Developer</span>
+          </h3>
+          <button class="modal-close" id="btnCloseApplicants">&times;</button>
+        </div>
+        <div class="modal-body" id="applicantListContainer">
+          <!-- Baris Data Pelamar dipopulasi lewat JS -->
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn-secondary"
+            id="btnCloseApplicantsFooter"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: Detail Pelamar, Evaluasi Nilai & Berkas, serta Keputusan HR -->
+    <div class="modal-overlay" id="modalCekKesesuaian">
+      <div class="modal-content" style="max-width: 650px">
+        <div class="modal-header">
+          <h3>Detail Data Diri Pelamar</h3>
+          <button
+            class="modal-close"
+            onclick="closeModal('modalCekKesesuaian')"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- AREA EVALUASI (NILAI & BERKAS) -->
+          <div class="eval-box">
+            <div class="eval-grid">
+              <!-- ELEMEN 1: Nilai (0-100) -->
+              <div class="eval-col">
+                <label><strong>Nilai Evaluasi (0 - 100)</strong></label>
+                <input
+                  type="number"
+                  id="inputScore"
+                  min="0"
+                  max="100"
+                  placeholder="Masukkan Skor"
+                  class="input-score"
+                  oninput="updateApplicantScore(this.value)"
+                />
+              </div>
+
+              <!-- ELEMEN 2: Kesesuaian Berkas -->
+              <div class="eval-col">
+                <label><strong>Kesesuaian Berkas</strong></label>
+                <div class="btn-group-doc">
+                  <button
+                    type="button"
+                    class="btn-doc-check btn-doc-pass"
+                    onclick="setDocStatus('Sesuai')"
+                  >
+                    Sesuai
+                  </button>
+                  <button
+                    type="button"
+                    class="btn-doc-check btn-doc-fail"
+                    onclick="setDocStatus('Tidak Sesuai')"
+                  >
+                    Tidak Sesuai
+                  </button>
+                </div>
+                <small
+                  >Status:
+                  <span id="dtDocStatus" class="doc-status">-</span></small
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Detail Data Pelamar -->
+          <div class="accordion-item">
+            <div class="accordion-header">Identitas Diri</div>
+            <div class="accordion-content">
+              <p><strong>Nama :</strong> <span id="dtNama">-</span></p>
+              <p><strong>Email :</strong> <span id="dtEmail">-</span></p>
+              <p><strong>No HP :</strong> <span id="dtHP">-</span></p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">Riwayat Pendidikan</div>
+            <div class="accordion-content">
+              <button
+                type="button"
+                class="btn-orange"
+                onclick="alert('Membuka Ijazah...')"
+              >
+                Cek Ijazah
+              </button>
+              <p><strong>Instansi :</strong> <span id="dtInstansi">-</span></p>
+              <p><strong>Jurusan :</strong> <span id="dtJurusan">-</span></p>
+              <p><strong>IPK :</strong> <span id="dtIPK">-</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ELEMEN 3: Tombol Mengubah Status Lamaran -->
+        <div
+          class="modal-footer"
+          style="justify-content: space-between; align-items: center"
+        >
+          <button
+            type="button"
+            class="btn-reject"
+            onclick="prosesLanjut('Ditolak')"
+          >
+            Tolak Lamaran
+          </button>
+          <button
+            type="button"
+            class="btn-send"
+            onclick="prosesLanjut('Terima')"
+          >
+            Terima (Lanjut Psikotes)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: Form Rekrutmen Dinamis (Psikotes / Wawancara / Offering) -->
+    <div class="modal-overlay" id="modalFormRekrutmen">
+      <div class="modal-content" style="max-width: 700px">
+        <div class="modal-header">
+          <h3 id="rekrutmenTitle">Proses Rekrutmen</h3>
+          <button
+            class="modal-close"
+            onclick="closeModal('modalFormRekrutmen')"
+          >
+            &times;
+          </button>
+        </div>
+        <form id="formRekrutmen" onsubmit="handleSendRekrutmen(event)">
+          <div class="modal-body">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Nama</label>
+                <input
+                  type="text"
+                  id="recNama"
+                  readonly
+                  style="background-color: #eee"
+                />
+              </div>
+              <div class="form-group">
+                <label>Alamat email</label>
+                <input
+                  type="email"
+                  id="recEmail"
+                  readonly
+                  style="background-color: #eee"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Title</label>
+              <input
+                type="text"
+                id="recTitle"
+                required
+                placeholder="Judul Undangan / Surat"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Waktu</label>
+              <input
+                type="text"
+                id="recWaktu"
+                required
+                placeholder="Contoh: Senin, 10 Oktober 2026 - 09:00 WIB"
+              />
+            </div>
+
+            <div class="form-group" id="groupTempat">
+              <label>Tempat</label>
+              <input
+                type="text"
+                id="recTempat"
+                placeholder="Lokasi / Link Meeting Online"
+              />
+            </div>
+
+            <div
+              class="form-group"
+              id="groupKodePsikotes"
+              style="display: none"
+            >
+              <label>Kode Psikotes</label>
+              <input
+                type="text"
+                id="recKodePsikotes"
+                placeholder="Masukkan Kode/Pin Akses Psikotes"
+              />
+            </div>
+
+            <div
+              class="form-group"
+              id="groupOfferingLetter"
+              style="display: none"
+            >
+              <label>Offering Letter</label>
+              <input type="file" id="recOfferingFile" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn-send">Kirim</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- MODAL BARU: Ubah Status / Tahapan Pelamar -->
+    <div class="modal-overlay" id="modalUbahStatus">
+      <div class="modal-content" style="max-width: 450px">
+        <div class="modal-header">
+          <h3>Ubah Status Pelamar</h3>
+          <button class="modal-close" onclick="closeModal('modalUbahStatus')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <strong>Nama Pelamar:</strong> <span id="lblNamaPelamar">-</span>
+          </p>
+          <p>
+            <strong>Status Saat Ini:</strong>
+            <span id="lblStatusSaatIni" class="stage-badge">-</span>
+          </p>
+
+          <div class="form-group" style="margin-top: 15px">
+            <label><strong>Pilih Status Baru:</strong></label>
+            <select
+              id="selectStatusBaru"
+              class="input-score"
+              style="margin-top: 5px; width: 100%"
+            >
+              <!-- Options akan diisi dinamis via JS -->
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer" style="justify-content: space-between">
+          <button
+            type="button"
+            class="btn-reject"
+            onclick="closeModal('modalUbahStatus')"
+          >
+            Batal
+          </button>
+          <button
+            type="button"
+            class="btn-send"
+            onclick="simpanPerubahanStatus()"
+          >
+            Simpan Status
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script src="/Fullstack-Kopkarlen/frontend/assets/js/admin_karir.js"></script>
+    <script src="/Fullstack-Kopkarlen/frontend/assets/js/kelola_karyawan.js"></script>
+  </body>
 </html>
