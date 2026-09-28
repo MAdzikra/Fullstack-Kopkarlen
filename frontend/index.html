@@ -4,112 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Koperasi Konsumen Karyawan PT Len Industri - Kopkarlen</title>
-    <link
-      rel="stylesheet"
-      href="./assets/css/style.css"
-    />
-    <link
-      rel="stylesheet"
-      href="./assets/css/index.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
-      /* CSS Tambahan untuk Profile Dropdown */
-      .profile-dropdown-container {
-        position: relative;
-        display: inline-block;
-      }
-
+      .profile-dropdown-container { position: relative; display: inline-block; }
       .profile-avatar-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #0056b3;
-        color: #ffffff;
-        border: 2px solid #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 16px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease;
+        width: 40px; height: 40px; border-radius: 50%; background-color: #0056b3;
+        color: #ffffff; border: 2px solid #ffffff; display: flex; align-items: center;
+        justify-content: center; cursor: pointer; font-weight: bold; font-size: 16px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); transition: transform 0.2s ease;
       }
-
-      .profile-avatar-btn:hover {
-        transform: scale(1.05);
-      }
-
+      .profile-avatar-btn:hover { transform: scale(1.05); }
       .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 50px;
-        background-color: #ffffff;
-        min-width: 170px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
-        overflow: hidden;
-        z-index: 1000;
+        display: none; position: absolute; right: 0; top: 50px; background-color: #ffffff;
+        min-width: 170px; box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15); border-radius: 8px;
+        overflow: hidden; z-index: 1000;
       }
-
-      .dropdown-menu a,
-      .dropdown-menu button {
-        color: #333333;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        width: 100%;
-        text-align: left;
-        background: none;
-        border: none;
-        font-size: 14px;
-        cursor: pointer;
-        box-sizing: border-box;
-        transition: background-color 0.2s;
+      .dropdown-menu a, .dropdown-menu button {
+        color: #333333; padding: 12px 16px; text-decoration: none; display: block; width: 100%;
+        text-align: left; background: none; border: none; font-size: 14px; cursor: pointer;
+        box-sizing: border-box; transition: background-color 0.2s;
       }
-
-      .dropdown-menu a:hover,
-      .dropdown-menu button:hover {
-        background-color: #f1f1f1;
-        color: #0056b3;
-      }
-
-      .dropdown-menu .logout-btn {
-        border-top: 1px solid #eeeeee;
-        color: #d9534f;
-      }
-
-      .dropdown-menu .logout-btn:hover {
-        background-color: #fdf2f2;
-        color: #c9302c;
-      }
-
-      .show-dropdown {
-        display: block;
-      }
-
-      .footer-socials {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-      }
-
-      .footer-socials a {
-        color: #555; /* Warna ikon default */
-        font-size: 18px; /* Ukuran ikon */
-        transition: color 0.3s ease;
-        text-decoration: none;
-      }
-
-      /* Efek Hover saat kursor diarahkan ke ikon */
-      .footer-socials a:hover {
-        color: #007bff; /* Warna saat di-hover */
-      }
+      .dropdown-menu a:hover, .dropdown-menu button:hover { background-color: #f1f1f1; color: #0056b3; }
+      .dropdown-menu .logout-btn { border-top: 1px solid #eeeeee; color: #d9534f; }
+      .dropdown-menu .logout-btn:hover { background-color: #fdf2f2; color: #c9302c; }
+      .show-dropdown { display: block; }
+      .footer-socials { display: flex; gap: 15px; align-items: center; }
+      .footer-socials a { color: #555; font-size: 18px; transition: color 0.3s ease; text-decoration: none; }
+      .footer-socials a:hover { color: #007bff; }
     </style>
   </head>
   <body>
@@ -125,27 +48,18 @@
         <a href="#gallery">GALERI</a>
         <a href="#contact">KONTAK</a>
         <a href="#" id="nav-karir" class="nav-highlight">KARIR</a>
-
-        <!-- Wadah untuk Tombol Login ATAU Profile Avatar -->
         <div id="nav-user-container">
           <a href="login.html" id="nav-login" class="btn-nav-login">LOGIN</a>
         </div>
       </nav>
     </header>
 
-<!-- Hero Section (Dengan Slider Img Auto-Scale) -->
+    <!-- Hero Section (Denggan Slider Img) -->
     <section id="home" class="hero-section">
-        <!-- Menggunakan tag img agar proporsi gambar 100% utuh tidak terpotong -->
         <img id="sliderImage" class="slider-image" src="" alt="Hero Banner">
-
-        <!-- Navigasi Panah -->
         <button class="slider-btn prev-btn" onclick="prevSlide()">❮</button>
         <button class="slider-btn next-btn" onclick="nextSlide()">❯</button>
-
-        <!-- Tombol Khusus Admin (Hanya muncul jika Role Admin) -->
-        <button class="admin-edit-btn" id="btnManageSlider" onclick="alert('Membuka modal edit CMS Slider...')">
-            ✏️ Kelola Slider Hero
-        </button>
+        <button class="admin-edit-btn" id="btnManageSlider">✏️ Kelola Slider Hero</button>
     </section>
 
     <!-- About Section -->
@@ -154,58 +68,18 @@
         <h2 class="section-title">ABOUT</h2>
         <div class="about-grid">
           <div class="about-copy">
-            <p>
-              <b
-                >Koperasi Konsumen Karyawan PT Len Industri (Persero) atau
-                KopKarLen</b
-              >
-              merupakan koperasi yang didirikan sebagai wadah usaha bersama bagi
-              karyawan Len Incorporated dengan berlandaskan prinsip kekeluargaan
-              dan kegotongroyongan.
-            </p>
-            <p>
-              Dalam menjalankan perannya, KopKarLen terus mengembangkan berbagai
-              unit usaha, meliputi
-              <b
-                >Unit Pertokoan, Unit Simpan Pinjam, Unit Bisnis, serta Unit
-                Rental &amp; Jasa</b
-              >, untuk memenuhi kebutuhan anggota, mendukung kebutuhan
-              perusahaan, dan membangun kerja sama yang saling menguntungkan.
-            </p>
-            <p>
-              <b
-                >Koperasi Konsumen Karyawan PT Len Industri (Persero) dibentuk
-                dengan tujuan untuk:</b
-              >
-            </p>
+            <p><b>Koperasi Konsumen Karyawan PT Len Industri (Persero) atau KopKarLen</b> merupakan koperasi yang didirikan sebagai wadah usaha bersama bagi karyawan Len Incorporated dengan berlandaskan prinsip kekeluargaan dan kegotongroyongan.</p>
+            <p>Dalam menjalankan perannya, KopKarLen terus mengembangkan berbagai unit usaha, meliputi <b>Unit Pertokoan, Unit Simpan Pinjam, Unit Bisnis, serta Unit Rental &amp; Jasa</b>, untuk memenuhi kebutuhan anggota, mendukung kebutuhan perusahaan, dan membangun kerja sama yang saling menguntungkan.</p>
+            <p><b>Koperasi Konsumen Karyawan PT Len Industri (Persero) dibentuk dengan tujuan untuk:</b></p>
             <ol>
-              <li>
-                Meningkatkan kesejahteraan anggota melalui kegiatan usaha
-                koperasi yang memberikan manfaat bagi anggota.
-              </li>
-              <li>
-                Memenuhi kebutuhan anggota melalui penyediaan barang dan jasa
-                yang dibutuhkan.
-              </li>
-              <li>
-                Mendukung kebutuhan perusahaan dan pihak lainnya melalui
-                kegiatan usaha dan pengadaan barang maupun jasa.
-              </li>
-              <li>
-                Mengembangkan usaha koperasi secara berkelanjutan berdasarkan
-                prinsip kekeluargaan dan saling menguntungkan.
-              </li>
-              <li>
-                Meningkatkan pemahaman dan pengetahuan anggota mengenai
-                perkoperasian.
-              </li>
+              <li>Meningkatkan kesejahteraan anggota melalui kegiatan usaha koperasi yang memberikan manfaat bagi anggota.</li>
+              <li>Memenuhi kebutuhan anggota melalui penyediaan barang dan jasa yang dibutuhkan.</li>
+              <li>Mendukung kebutuhan perusahaan dan pihak lainnya melalui kegiatan usaha dan pengadaan barang maupun jasa.</li>
+              <li>Mengembangkan usaha koperasi secara berkelanjutan berdasarkan prinsip kekeluargaan dan saling menguntungkan.</li>
+              <li>Meningkatkan pemahaman dan pengetahuan anggota mengenai perkoperasian.</li>
             </ol>
           </div>
-          <img
-            class="about-photo"
-            src="https://www.kopkarlen.coop.id/assets/images/Recipes-1789456214-537.jpg"
-            alt="Gedung KopKarLen"
-          />
+          <img class="about-photo" src="https://www.kopkarlen.coop.id/assets/images/Recipes-1789456214-537.jpg" alt="Gedung KopKarLen" />
         </div>
       </div>
     </section>
@@ -217,23 +91,14 @@
             <div class="vm-icon">✦</div>
             <div>
               <h3>VISION</h3>
-              <p>
-                Menjadi mitra profesional yang mandiri, terpercaya, dan
-                memberikan nilai tambah bagi anggota dan mitra.
-              </p>
+              <p>Menjadi mitra profesional yang mandiri, terpercaya, dan memberikan nilai tambah bagi anggota dan mitra.</p>
             </div>
           </div>
           <div class="vm-item">
             <div class="vm-icon">◎</div>
             <div>
               <h3>MISSION</h3>
-              <p>
-                • Meningkatkan kesejahteraan anggota melalui unit usaha yang
-                produktif dan berkelanjutan • Menjalin kemitraan yang
-                professional dan saling menguntungkan • Memberikan layanan yang
-                inovatif dan bermanfaat bagi anggota • Mendorong tata Kelola
-                berbasis “KOP DIGI”.
-              </p>
+              <p>• Meningkatkan kesejahteraan anggota melalui unit usaha yang produktif dan berkelanjutan • Menjalin kemitraan yang professional dan saling menguntungkan • Memberikan layanan yang inovatif dan bermanfaat bagi anggota • Mendorong tata Kelola berbasis “KOP DIGI”.</p>
             </div>
           </div>
         </div>
@@ -251,36 +116,12 @@
       <div class="container">
         <h2 class="section-title">SUSUNAN PENGURUS DAN PENGAWAS</h2>
         <div class="board-grid">
-          <div class="person">
-            <img src="" alt="ILHAM NUGRAHA" />
-            <h4>ILHAM NUGRAHA</h4>
-            <p>Ketua</p>
-          </div>
-          <div class="person">
-            <img src="" alt="AMY ELVA SILVIANY" />
-            <h4>AMY ELVA SILVIANY</h4>
-            <p>Sekretaris</p>
-          </div>
-          <div class="person">
-            <img src="" alt="DEDY SUBKHAN" />
-            <h4>DEDY SUBKHAN</h4>
-            <p>Bendahara</p>
-          </div>
-          <div class="person">
-            <img src="" alt="RESTU TRI GUSTIAWAN" />
-            <h4>RESTU TRI GUSTIAWAN</h4>
-            <p>Ketua Pengawas</p>
-          </div>
-          <div class="person">
-            <img src="" alt="ADI PAMUNGKU" />
-            <h4>ADI PAMUNGKU</h4>
-            <p>Anggota Pengawas</p>
-          </div>
-          <div class="person">
-            <img src="" alt="NIA HERMIYANTI" />
-            <h4>NIA HERMIYANTI</h4>
-            <p>Anggota Pengawas</p>
-          </div>
+          <div class="person"><img src="" alt="ILHAM NUGRAHA" /><h4>ILHAM NUGRAHA</h4><p>Ketua</p></div>
+          <div class="person"><img src="" alt="AMY ELVA SILVIANY" /><h4>AMY ELVA SILVIANY</h4><p>Sekretaris</p></div>
+          <div class="person"><img src="" alt="DEDY SUBKHAN" /><h4>DEDY SUBKHAN</h4><p>Bendahara</p></div>
+          <div class="person"><img src="" alt="RESTU TRI GUSTIAWAN" /><h4>RESTU TRI GUSTIAWAN</h4><p>Ketua Pengawas</p></div>
+          <div class="person"><img src="" alt="ADI PAMUNGKU" /><h4>ADI PAMUNGKU</h4><p>Anggota Pengawas</p></div>
+          <div class="person"><img src="" alt="NIA HERMIYANTI" /><h4>NIA HERMIYANTI</h4><p>Anggota Pengawas</p></div>
         </div>
       </div>
     </section>
@@ -292,35 +133,17 @@
           <h2 class="contact-title">KONTAK KAMI</h2>
           <div class="title-underline"></div>
           <p class="contact-tagline">Tumbuh Bersama, Berdaya, dan Sejahtera</p>
-
-          <div class="contact-detail">
-            <span class="contact-icon">📧</span>
-            <a href="mailto:humaskopkarlen@gmail.com"
-              >humaskopkarlen@gmail.com</a
-            >
-          </div>
+          <div class="contact-detail"><span class="contact-icon">📧</span><a href="mailto:humaskopkarlen@gmail.com">humaskopkarlen@gmail.com</a></div>
           <div class="contact-detail">
             <span class="contact-icon">📍</span>
-            <p>
-              Jl. Soekarno Hatta No. 442, Pasirluyu,<br />Kec. Regol, Kota
-              Bandung, Jawa Barat<br />40254
-            </p>
+            <p>Jl. Soekarno Hatta No. 442, Pasirluyu,<br />Kec. Regol, Kota Bandung, Jawa Barat<br />40254</p>
           </div>
         </div>
-
         <div class="contact-map">
           <h2 class="contact-title">KUNJUNGI KAMI</h2>
           <div class="title-underline"></div>
           <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.556214534724!2d107.61066897587563!3d-6.94416046797204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89cb51dc8b5%3A0xcb1b682b13ed7858!2sPT%20Len%20Industri%20(Persero)!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
-              width="100%"
-              height="250"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.556214534724!2d107.61066897587563!3d-6.94416046797204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89cb51dc8b5%3A0xcb1b682b13ed7858!2sPT%20Len%20Industri%20(Persero)!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="250" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
@@ -329,22 +152,12 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-inner">
-          <div class="footer-note">
-            Koperasi Konsumen Karyawan PT Len Industri (Persero)
-          </div>
+          <div class="footer-note">Koperasi Konsumen Karyawan PT Len Industri (Persero)</div>
           <div class="footer-socials">
-            <a href="#" target="_blank" aria-label="Facebook"
-              ><i class="fa-brands fa-facebook-f"></i
-            ></a>
-            <a href="#" target="_blank" aria-label="X (Twitter)"
-              ><i class="fa-brands fa-x-twitter"></i
-            ></a>
-            <a href="#" target="_blank" aria-label="Instagram"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a href="#" target="_blank" aria-label="LinkedIn"
-              ><i class="fa-brands fa-linkedin-in"></i
-            ></a>
+            <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
       </div>
@@ -355,8 +168,26 @@
       <div class="close" id="close">×</div>
       <img id="lightboxImg" src="" alt="" />
     </div>
+
+    <!-- MODAL CMS SLIDER (Khusus Admin) -->
+    <div class="modal-overlay" id="modalSliderCMS" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; justify-content: center; align-items: center;">
+      <div style="background: white; width: 90%; max-width: 650px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd;">
+          <h3 style="margin: 0; color: #333;">Kelola Slider Hero</h3>
+          <button id="btnCloseSliderCMS" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+        </div>
+        <div style="padding: 20px;">
+          <p style="margin-bottom: 15px; color: #666; font-size: 14px;">Atur maksimal 3 gambar. Gambar akan terpotong otomatis (auto-crop) menyesuaikan ukuran layar.</p>
+          <div id="sliderSlotsContainer" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            <!-- Slot akan diisi via JS -->
+          </div>
+        </div>
+        <div style="padding: 15px 20px; border-top: 1px solid #ddd; background: #f9f9f9; display: flex; justify-content: flex-end; gap: 10px;">
+          <button id="btnSaveSliderCMS" class="btn-primary" style="background-color: #32cd32; width: 100%;">Terapkan & Simpan</button>
+        </div>
+      </div>
+    </div>
     
-    <!-- Link Script JS Diperbarui (Relative Path) -->
     <script src="./assets/js/index.js"></script>
   </body>
 </html>
