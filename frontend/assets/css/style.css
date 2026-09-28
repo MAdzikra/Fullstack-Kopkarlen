@@ -67,13 +67,63 @@ body {
     color: white !important;
 }
 
-/* --- Hero Section Styles (Sesuai Desain Asli) --- */
+/* --- Hero Section & Slider Styles --- */
 .hero-section {
-    height: 100vh;
-    background-image: url('https://kopkarlen.coop.id/assets/images/Slider-Home-1790214218-163.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    padding-top: 65px; /* Jarak agar gambar tidak tertutup navbar yang fixed */
+}
+
+.slider-image {
+    width: 100%;
+    height: auto; /* Memastikan tinggi menyesuaikan proporsi asli gambar */
+    display: block;
+    transition: opacity 0.3s ease-in-out; /* Efek transisi fade */
+}
+
+/* Tombol Navigasi Slider */
+.slider-btn {
+    position: absolute;
+    top: 55%; /* Sedikit diturunkan karena ada padding-top */
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Tombol Kelola Admin */
+.admin-edit-btn {
+    display: none; 
+    position: absolute;
+    top: 90px;
+    right: 30px;
+    z-index: 20;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.admin-edit-btn:hover {
+    background-color: #e68a00;
 }
 
 /* --- Dummy Section Styles --- */
