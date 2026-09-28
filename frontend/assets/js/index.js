@@ -76,6 +76,47 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "index.html";
     });
   }
+
+// --- LOGIKA SLIDER HERO (CMS ITEMS) ---
+  const heroSlides = [
+    "https://kopkarlen.coop.id/assets/images/Slider-Home-1790214218-163.jpg",
+    "https://www.kopkarlen.coop.id/assets/images/Recipes-1789456214-537.jpg"
+  ];
+
+  let currentSlideIndex = 0;
+  const sliderImg = document.getElementById('sliderImage');
+
+  function renderSlider() {
+      if (sliderImg) {
+          sliderImg.style.opacity = 0.5; // Efek fade out singkat
+          setTimeout(() => {
+              sliderImg.src = heroSlides[currentSlideIndex];
+              sliderImg.style.opacity = 1; // Efek fade in
+          }, 200);
+      }
+  }
+
+  window.nextSlide = function() {
+      currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
+      renderSlider();
+  };
+
+  window.prevSlide = function() {
+      currentSlideIndex = (currentSlideIndex - 1 + heroSlides.length) % heroSlides.length;
+      renderSlider();
+  };
+
+  // Eksekusi render pertama
+  renderSlider();
+  
+  // Eksekusi auto-play slider setiap 5 detik
+  setInterval(window.nextSlide, 5000);
+
+  // Jika yang login adalah admin, munculkan tombol kelola
+  const btnManage = document.getElementById('btnManageSlider');
+  if (role === 'admin' && btnManage) {
+      btnManage.style.display = 'block';
+  }
 });
 
 const galleryImages = [

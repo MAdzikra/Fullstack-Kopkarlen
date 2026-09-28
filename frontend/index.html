@@ -6,11 +6,11 @@
     <title>Koperasi Konsumen Karyawan PT Len Industri - Kopkarlen</title>
     <link
       rel="stylesheet"
-      href="/Fullstack-Kopkarlen/frontend/assets/css/style.css"
+      href="./assets/css/style.css"
     />
     <link
       rel="stylesheet"
-      href="/Fullstack-Kopkarlen/frontend/assets/css/index.css"
+      href="./assets/css/index.css"
     />
     <link
       rel="stylesheet"
@@ -133,8 +133,20 @@
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section"></section>
+<!-- Hero Section (Dengan Slider Img Auto-Scale) -->
+    <section id="home" class="hero-section">
+        <!-- Menggunakan tag img agar proporsi gambar 100% utuh tidak terpotong -->
+        <img id="sliderImage" class="slider-image" src="" alt="Hero Banner">
+
+        <!-- Navigasi Panah -->
+        <button class="slider-btn prev-btn" onclick="prevSlide()">❮</button>
+        <button class="slider-btn next-btn" onclick="nextSlide()">❯</button>
+
+        <!-- Tombol Khusus Admin (Hanya muncul jika Role Admin) -->
+        <button class="admin-edit-btn" id="btnManageSlider" onclick="alert('Membuka modal edit CMS Slider...')">
+            ✏️ Kelola Slider Hero
+        </button>
+    </section>
 
     <!-- About Section -->
     <section id="about">
@@ -343,6 +355,8 @@
       <div class="close" id="close">×</div>
       <img id="lightboxImg" src="" alt="" />
     </div>
-    <script src="/Fullstack-Kopkarlen/frontend/assets/js/index.js"></script>
+    
+    <!-- Link Script JS Diperbarui (Relative Path) -->
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>
